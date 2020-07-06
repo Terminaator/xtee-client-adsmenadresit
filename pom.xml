@@ -14,26 +14,37 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   </properties>
 
-  <dependencies>
-    <!-- https://mvnrepository.com/artifact/com.nortal.jroad/xtee-client-transport -->
-    <dependency>
-      <groupId>com.nortal.jroad</groupId>
-      <artifactId>xtee-client-transport</artifactId>
-      <version>4.2.11</version>
-    </dependency>
-  </dependencies>
+  <parent>
+    <groupId>com.nortal.jroad</groupId>
+    <artifactId>xtee-client-service</artifactId>
+    <version>4.2.11</version>
+  </parent>
 
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
-        <configuration>
-          <source>11</source>
-          <target>11</target>
-          <encoding>UTF-8</encoding>
-        </configuration>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.1.1</version>
+        <executions>
+          <execution>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <inherited>true</inherited>
+            <configuration>
+              <mainClass>com.nortal.jroad.typegen.TypeGen</mainClass>
+              <arguments>
+                <argument>wsdldir=${basedir}/src/main/resources</argument>
+                <argument>sourcedir=${basedir}/src/main/java</argument>
+                <argument>xsbdir=${basedir}/target/classes</argument>
+                <argument>basepackage=ehr.ads.jroad.client.adsmenadresit.types</argument>
+                <argument>dbclassespackage=ehr.ads.jroad.client.adsmenadresit.database</argument>
+              </arguments>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>

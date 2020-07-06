@@ -38,3 +38,5 @@ local.properties
 # IDEA
 .idea/
 *.iml
+/src/main/java/ehr/ads/jroad/client/adsmenadresit/database/
+/src/main/java/ehr/ads/jroad/client/adsmenadresit/types/

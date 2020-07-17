@@ -20,10 +20,15 @@ public class AdsMenadresitXTeeServiceImpl implements AdsMenadresitXTeeService {
 
     ADSmenadresitParingType adSmenadresitParingType = ADSmenadresitParingType.Factory.newInstance();
     adSmenadresitParingType.setAinultKontroll(check);
-    adSmenadresitParingType.setMenetlusNr(procedureNumber);
     adSmenadresitParingType.setMenetlejaNimi(procedureConductorName);
     adSmenadresitParingType.setEsitajaKood(presenterCode);
-    adSmenadresitParingType.setObjektid(objects);
+
+    if (procedureNumber != null) {
+      adSmenadresitParingType.setMenetlusNr(procedureNumber);
+    }
+    if (objects != null) {
+      adSmenadresitParingType.setObjektid(objects);
+    }
 
     return adsmenadresitXRoadDatabase.adSmenadresitV1(adSmenadresitParingType);
   }

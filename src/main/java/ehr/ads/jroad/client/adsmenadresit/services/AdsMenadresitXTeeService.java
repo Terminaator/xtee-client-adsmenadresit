@@ -8,6 +8,8 @@ import java.math.BigInteger;
 
 public interface AdsMenadresitXTeeService {
 
+
+  ADSmenadresitVastusType menadresitRequest(ADSmenadresitParingType adSmenadresitParingType) throws XRoadServiceConsumptionException;
   ADSmenadresitVastusType menadresitRequest(boolean check, BigInteger procedureNumber, String procedureConductorName, String presenterCode, ADSmenadresitParingType.Objektid objects) throws XRoadServiceConsumptionException;
 
 }

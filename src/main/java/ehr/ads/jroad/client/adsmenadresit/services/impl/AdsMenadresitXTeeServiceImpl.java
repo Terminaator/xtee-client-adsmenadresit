@@ -16,6 +16,10 @@ public class AdsMenadresitXTeeServiceImpl implements AdsMenadresitXTeeService {
   @Resource
   private AdsmenadresitXRoadDatabase adsmenadresitXRoadDatabase;
 
+  public ADSmenadresitVastusType menadresitRequest(ADSmenadresitParingType adSmenadresitParingType) throws XRoadServiceConsumptionException {
+    return adsmenadresitXRoadDatabase.adSmenadresitV1(adSmenadresitParingType);
+  }
+
   public ADSmenadresitVastusType menadresitRequest(boolean check, BigInteger procedureNumber, String procedureConductorName, String presenterCode, ADSmenadresitParingType.Objektid objects) throws XRoadServiceConsumptionException {
 
     ADSmenadresitParingType adSmenadresitParingType = ADSmenadresitParingType.Factory.newInstance();
